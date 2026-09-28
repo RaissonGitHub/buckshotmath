@@ -29,7 +29,7 @@ export default function ListaBalas({
 
   return (
     <div
-      className="flex h-43 w-[calc(100vw-2rem)] max-w-91 items-center overflow-x-auto border border-white bg-repeat"
+      className="flex h-43 w-[calc(100vw-2rem)] max-w-91 items-center border border-white bg-repeat lg:h-32"
       style={{ backgroundImage: `url(${textura})` }}
     >
       {Array.from({ length: qtdBalas }, (_, i) => (
@@ -50,7 +50,7 @@ export default function ListaBalas({
                   : balabranca
             }
             alt=""
-            className="h-30 w-auto object-contain"
+            className="h-30 w-auto object-contain lg:h-24"
           />
           <button
             className="hover:cursor-pointer"

@@ -46,11 +46,11 @@ function App() {
     : (blankDesconhecidas / totalDesconhecidas) * 100 || 0;
   return (
     <>
-      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-5 overflow-x-hidden bg-dark px-4 py-8 text-white sm:py-10">
-        <h2 className="pt-2 text-center text-2xl font-bold sm:pt-6 sm:text-3xl">
+      <div className="flex min-h-screen w-full flex-col items-center justify-center gap-5 overflow-x-hidden bg-dark px-4 py-6 text-white sm:py-10 lg:h-screen lg:min-h-0 lg:gap-2 lg:overflow-hidden lg:py-2">
+        <h2 className="text-center text-2xl font-bold sm:pt-6 sm:text-3xl lg:pt-0">
           Informe as balas
         </h2>
-        <div className='h-40 w-full max-w-3xl bg-[url("https://imgs.search.brave.com/yKsbBuVCwMziXmEZyB8RjymGmOpi_yYKBjvjYQI1tp4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnJl/ZGQuaXQvYmloZnBv/MWV2ejhlMS5wbmc")] bg-center sm:h-60'></div>
+        <div className='h-40 w-full max-w-3xl bg-[url("https://imgs.search.brave.com/yKsbBuVCwMziXmEZyB8RjymGmOpi_yYKBjvjYQI1tp4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnJl/ZGQuaXQvYmloZnBv/MWV2ejhlMS5wbmc")]  sm:h-60 lg:h-40 bg-center bg-cover'></div>
         <div className="flex w-full max-w-md flex-wrap items-center justify-center gap-4">
           <Balas
             imagem={balavermelha}
