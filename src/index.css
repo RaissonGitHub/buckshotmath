@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&family=Lato:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-anonymous: "Anonymous Pro", Lato, sans-serif;
+}
+
+body{
+    background-image: url(https://img.itch.zone/aW1nLzE0NDc2NjczLnBuZw==/original/UuHCQH.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  min-height: 100vh;
+  margin: 0;
+    font-family: "Anonymous Pro";
+    font-weight: bold;
+}
