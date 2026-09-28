@@ -29,13 +29,13 @@ export default function ListaBalas({
 
   return (
     <div
-      className="flex h-43 w-[calc(100vw-2rem)] max-w-91 items-center border border-white bg-repeat lg:h-32"
+      className="flex h-43 w-[calc(100vw-2rem)] max-w-74   items-center md:h-37 border border-white bg-repeat lg:h-33"
       style={{ backgroundImage: `url(${textura})` }}
     >
       {Array.from({ length: qtdBalas }, (_, i) => (
         <div
           key={i}
-          className="flex shrink-0 flex-col items-center justify-center border-2 border-white"
+          className="flex shrink-0 flex-col items-center justify-center border-2 border-white lg:gap-0"
         >
           <img
             src={
@@ -50,16 +50,16 @@ export default function ListaBalas({
                   : balabranca
             }
             alt=""
-            className="h-30 w-auto object-contain lg:h-24"
+            className="h-23 w-auto object-contain lg:h-24 md:h-24"
           />
           <button
-            className="hover:cursor-pointer"
+            className="hover:cursor-pointer lg:text-sm lg:leading-4"
             onClick={() => definirCor(i, "live")}
           >
             🟥
           </button>
           <button
-            className="hover:cursor-pointer"
+            className="hover:cursor-pointer lg:text-sm lg:leading-4"
             onClick={() => definirCor(i, "blank")}
           >
             🟦
