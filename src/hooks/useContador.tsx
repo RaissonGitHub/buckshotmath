@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export type Shell = "black" | "live";
+export type Shell = "blank" | "live";
 
 export type Registro = {
   balaN: number;
@@ -26,7 +26,15 @@ export function useContador() {
       return false;
     }
 
-    setMarcadas((valoresAtuais) => ({ ...valoresAtuais, [indice]: cor }));
+    setMarcadas((valoresAtuais) => {
+      if (corAnterior === cor) {
+        const novasMarcadas = { ...valoresAtuais };
+        delete novasMarcadas[indice];
+        return novasMarcadas;
+      }
+
+      return { ...valoresAtuais, [indice]: cor };
+    });
     return true;
   };
 
@@ -46,8 +54,6 @@ export function useContador() {
       setLive(live - 1);
       setShoot(shoot + 1);
       setBalaAtirada((a) => [...a, { balaN: shoot, tipo: "live" }]);
-      console.log({ balaN: shoot, tipo: "live" });
-      console.log(balaAtirada);
       setBlock(true);
     }
   };
@@ -55,7 +61,7 @@ export function useContador() {
     if (blank > 0) {
       setBlank(blank - 1);
       setShoot(shoot + 1);
-      setBalaAtirada((a) => [...a, { balaN: shoot, tipo: "black" }]);
+      setBalaAtirada((a) => [...a, { balaN: shoot, tipo: "blank" }]);
       setBlock(true);
     }
   };
@@ -83,5 +89,6 @@ export function useContador() {
     marcarShell,
     resetId,
     marcadas,
+    block,
   };
 }

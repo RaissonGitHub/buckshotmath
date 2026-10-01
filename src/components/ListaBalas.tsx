@@ -20,10 +20,19 @@ export default function ListaBalas({
   const [cores, setCores] = useState<Record<number, "blank" | "live">>({});
 
   const definirCor = (indice: number, cor: "blank" | "live") => {
-    const marcou = marcarShell(indice, cor === "blank" ? "black" : "live");
+    const removendoCor = cores[indice] === cor;
+    const marcou = marcarShell(indice, cor);
 
     if (marcou) {
-      setCores((coresAtuais) => ({ ...coresAtuais, [indice]: cor }));
+      setCores((coresAtuais) => {
+        if (removendoCor) {
+          const novasCores = { ...coresAtuais };
+          delete novasCores[indice];
+          return novasCores;
+        }
+
+        return { ...coresAtuais, [indice]: cor };
+      });
     }
   };
 
@@ -37,10 +46,13 @@ export default function ListaBalas({
           key={i}
           className="flex shrink-0 flex-col items-center justify-center border-2 border-white lg:gap-0"
         >
+          <span className="text-black absolute text-3xl font-bold">
+            {i + 1}
+          </span>
           <img
             src={
               balaAtirada[i]
-                ? balaAtirada[i].tipo === "black"
+                ? balaAtirada[i].tipo === "blank"
                   ? balazul
                   : balavermelha
                 : cores[i]
@@ -53,13 +65,19 @@ export default function ListaBalas({
             className="h-23 w-auto object-contain lg:h-24 md:h-24"
           />
           <button
-            className="hover:cursor-pointer lg:text-sm lg:leading-4"
+            type="button"
+            title="Mark as live shell"
+            aria-label="Mark as live shell"
+            className="hover:cursor-pointer lg:text-sm lg:leading-4 hover:text-[1em]"
             onClick={() => definirCor(i, "live")}
           >
             🟥
           </button>
           <button
-            className="hover:cursor-pointer lg:text-sm lg:leading-4"
+            type="button"
+            title="Mark as blank shell"
+            aria-label="Mark as blank shell"
+            className="hover:cursor-pointer lg:text-sm lg:leading-4 hover:text-[1em]"
             onClick={() => definirCor(i, "blank")}
           >
             🟦

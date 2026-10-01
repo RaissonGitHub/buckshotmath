@@ -18,6 +18,7 @@ function App() {
     marcarShell,
     resetId,
     marcadas,
+    block,
   } = useContador();
   const qtdBalas = blank + live + balaAtirada.length;
   const indiceAtual = balaAtirada.length;
@@ -29,7 +30,7 @@ function App() {
     ([, cor]) => cor === "live",
   ).length;
   const blankConhecidas = marcadasFuturas.filter(
-    ([, cor]) => cor === "black",
+    ([, cor]) => cor === "blank",
   ).length;
   const liveDesconhecidas = Math.max(live - liveConhecidas, 0);
   const blankDesconhecidas = Math.max(blank - blankConhecidas, 0);
@@ -40,7 +41,7 @@ function App() {
       : 0
     : (liveDesconhecidas / totalDesconhecidas) * 100 || 0;
   const probBlank = corAtual
-    ? corAtual === "black"
+    ? corAtual === "blank"
       ? 100
       : 0
     : (blankDesconhecidas / totalDesconhecidas) * 100 || 0;
@@ -48,7 +49,7 @@ function App() {
     <>
       <div className="flex min-h-screen w-full flex-col items-center justify-center gap-5 overflow-x-hidden bg-dark px-4 py-6 text-white sm:py-10 lg:h-screen lg:min-h-0 lg:gap-2 lg:overflow-hidden lg:py-2">
         <h2 className="text-center text-2xl font-bold sm:pt-6 sm:text-3xl lg:pt-0">
-          Informe as balas
+          Enter shell count
         </h2>
         <div className='h-40 w-full max-w-3xl bg-[url("https://imgs.search.brave.com/yKsbBuVCwMziXmEZyB8RjymGmOpi_yYKBjvjYQI1tp4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnJl/ZGQuaXQvYmloZnBv/MWV2ejhlMS5wbmc")]  sm:h-60 lg:h-40 bg-center bg-cover'></div>
         <div className="flex w-full max-w-md flex-wrap items-center justify-center gap-4">
@@ -58,6 +59,7 @@ function App() {
             ladoBotoes="esquerdo"
             onClickUp={onClickUpVermelha}
             onClickDown={onClickDownVermelha}
+            block={block}
           />
           <Balas
             imagem={balazul}
@@ -65,22 +67,23 @@ function App() {
             ladoBotoes="direito"
             onClickUp={onClickUpAzul}
             onClickDown={onClickDownAzul}
+            block={block}
           />
         </div>
-        <span>Bala atual: {shoot}</span>
+        <span>Current round: {shoot}</span>
         <span>
-          Prob <span className="text-red-600">live</span> {probLive.toFixed(2)}%
+          <span className="text-red-600">Live</span> shell probability:
+          {probLive.toFixed(2)}%
         </span>
         <span>
-          Prob <span className="text-blue-600">blank</span>{" "}
+          <span className="text-blue-600">Blank</span> shell probability:
           {probBlank.toFixed(2)} %
         </span>
         <button
           onClick={reset}
-          className="h-16 w-30 border-4 border-[#2b211d] bg-[#d8c6ae] text-3xl leading-none text-[#241b18] shadow-[4px_5px_0_#241b18,0_0_0_2px_#8f7d6c_inset] transition-transform hover:-translate-y-0.5 hover:bg-[#e3d2bc] active:translate-y-1 active:shadow-[2px_2px_0_#241b18,0_0_0_2px_#8f7d6c_inset]
-"
+          className="h-16 w-30 border-4 border-[#2b211d] bg-[#d8c6ae] text-3xl leading-none text-[#241b18] shadow-[4px_5px_0_#241b18,0_0_0_2px_#8f7d6c_inset] transition-transform hover:-translate-y-0.5 hover:bg-[#e3d2bc] active:translate-y-1 active:shadow-[2px_2px_0_#241b18,0_0_0_2px_#8f7d6c_inset] hover:cursor-pointer"
         >
-          Limpar
+          Clear
         </button>
         <ListaBalas
           key={resetId}
