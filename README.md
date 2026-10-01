@@ -1,3 +1,3 @@
-# Buckshot Math
+Buckshot Math
 
-Calcule as probabilidades de balas reais e vazias durante uma partida de Buckshot Roulette. Informe a quantidade de cada tipo de bala e acompanhe a sequência e as chances do próximo disparo.
+Calculate the probabilities of live and blank shells during a game of Buckshot Roulette. Enter the number of each type of shell and track the sequence and odds of the next shot.
